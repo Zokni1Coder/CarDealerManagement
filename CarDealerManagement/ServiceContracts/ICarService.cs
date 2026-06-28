@@ -6,7 +6,8 @@ namespace ServiceContracts
     {
         Task<List<CarResponse>?> GetAllCars();
         Task<CarResponse> AddCar(AddCarRequest request);
-        //Task<CarResponse> UpdateCar(UpdateCarRequest request);
+        Task<CarResponse?> UpdateCar(UpdateCarRequest request);
         Task<bool> DeleteCar(Guid id);
+        Task<CarResponse?> GetCarById(Guid id);
     }
 }

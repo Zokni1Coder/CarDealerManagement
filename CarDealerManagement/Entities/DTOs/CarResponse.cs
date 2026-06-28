@@ -23,6 +23,7 @@ namespace Entities.DTOs
 
     public static class CarExtension
     {
+
         public static CarResponse ToCarResponse(this Car car)
         {
             return new CarResponse

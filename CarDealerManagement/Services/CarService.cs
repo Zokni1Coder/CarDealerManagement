@@ -11,22 +11,34 @@ namespace Services
         private ICarRepository _carRepository { get; set; }
         public CarService(ICarRepository carRepository)
         {
-           this._carRepository = carRepository; 
+            this._carRepository = carRepository;
         }
 
-        public Task<CarResponse> AddCar(AddCarRequest request)
+        public async Task<CarResponse> AddCar(AddCarRequest request)
         {
-            throw new NotImplementedException();
+            Car newCar = request.ToCar();
+            return await this._carRepository.AddCar(newCar);
         }
 
-        public Task<bool> DeleteCar(Guid id)
+        public async Task<bool> DeleteCar(Guid id)
         {
-            throw new NotImplementedException();
+            bool result = await this._carRepository.DeleteCar(id);
+            return result;
         }
 
         public async Task<List<CarResponse>?> GetAllCars()
         {
             return await this._carRepository.GetAllCars();
+        }
+
+        public async Task<CarResponse?> UpdateCar(UpdateCarRequest request)
+        {
+           return await this._carRepository.UpdateCar(request);
+        }
+
+        public async Task<CarResponse?> GetCarById(Guid id)
+        {
+            return await this._carRepository.GetCarById(id);
         }
     }
 }

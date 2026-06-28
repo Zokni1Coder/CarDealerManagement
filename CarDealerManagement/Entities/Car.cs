@@ -28,5 +28,26 @@ namespace Entities
         [Required]
         [StringLength(20)]
         public string? manufacturer { get; set; }
+
+        public override bool Equals(object? obj)
+        {            
+            if (obj is not Car)
+            {
+               return false;
+            }
+            Car? temp = obj as Car;
+
+            return this.id == temp?.id;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"Parameters of the car: {this.manufacturer}(Manufacturer), {this.model}(Model), {this.vehicleType}(Vehicle Type), {this.fuelType}(Fuel Type), {this.transmissionType}(Transmission Type), {this.manufacturingDate.ToString("dd-MM-yyyy")}(Manufacturing Date), {this.km}(KM), {this.hp}(HP).";
+        }
     }
 }

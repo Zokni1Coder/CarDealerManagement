@@ -15,21 +15,53 @@ namespace Repositories
             this._carsDBContext = carsDBContext;
         }
 
-        public Task<CarResponse> AddCar(AddCarRequest request)
+        public async Task<CarResponse> AddCar(Car neweCar)
         {
-            throw new NotImplementedException();
+            this._carsDBContext.Cars.Add(neweCar);
+            this._carsDBContext.SaveChanges();
+            return neweCar.ToCarResponse();
         }
 
-        public Task<bool> DeleteCar(Guid id)
+        public async Task<bool> DeleteCar(Guid id)
         {
-            throw new NotImplementedException();
+            int affectedRow = await this._carsDBContext.Cars.Select(car => car.id == id).ExecuteDeleteAsync();
+            return affectedRow > 0;
         }
 
         public async Task<List<CarResponse>?> GetAllCars()
         {
             List<CarResponse>? cars = await this._carsDBContext.GetAllCars();
-            
-            return cars; 
+
+            return cars;
+        }
+
+        public async Task<CarResponse?> GetCarById(Guid id)
+        {
+            Car? searchedCar = await this._carsDBContext.Cars.FirstOrDefaultAsync(car => car.id == id);
+            if (searchedCar == null) searchedCar = null as Car;
+
+            return searchedCar?.ToCarResponse();
+        }
+
+        public async Task<CarResponse?> UpdateCar(UpdateCarRequest request)
+        {
+            Car? updatableCar = await this._carsDBContext.Cars.FirstOrDefaultAsync(car => car.id == request.id);
+
+            if (updatableCar == null)
+            {
+                updatableCar = null as Car;                
+            }
+
+            updatableCar.model = request.model;
+            updatableCar.manufacturer = request.manufacturer;
+            updatableCar.manufacturingDate = request.manufacturingDate;
+            updatableCar.hp = request.hp;
+            updatableCar.km = request.km;
+            updatableCar.fuelType = request.fuelType.ToString();
+            updatableCar.vehicleType = request.vehicleType.ToString();
+            updatableCar.transmissionType = request.transmissionType.ToString();
+
+            return updatableCar.ToCarResponse();
         }
     }
 }
