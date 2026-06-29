@@ -19,6 +19,7 @@ namespace Entities.DTOs
         public string? vehicleType { get; set; }
         public string? model { get; set; }
         public string? manufacturer { get; set; }
+        public double price { get; set; }
     }
 
     public static class CarExtension
@@ -37,6 +38,7 @@ namespace Entities.DTOs
                 vehicleType = car.vehicleType,
                 km = car.km,
                 hp = car.hp,
+                price = car.price
             };
         }
     }

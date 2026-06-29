@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333333;
+}
+
+ul li {
+  float: left;
+}
+
+ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul li a:hover {
+  background-color: #111111;
+}
+
+#logo{
+    padding: 14px 16px;
+    height: 15px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 90%; 
+  box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.61);
+  border-radius: 8px; 
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #04AA6D;
+  color: white;
+}
+
+th a{
+  color: white;
+  text-decoration: none;
+}
+
+.row :hover{
+  background-color:deepskyblue
+}
+
+tr:hover {background-color: coral;}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.container-title{
+  text-align: center;
+}
+
+.searching-options{
+  margin-left: 5%;
+  margin-bottom: 1%;
+  font-size: larger;
+}
+
+#after-picture{
+ width: 150px;
+ box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.61);
+ border-radius: 8px; 
+}
+
+.picture-holder{
+  padding-top: 5%;
+  justify-content: center;
+  display: flex;
+  margin: auto;
+  width: 50%;
+  opacity: 0.5;
+}

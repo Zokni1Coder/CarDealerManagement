@@ -17,6 +17,7 @@ namespace Entities.DTOs
         public VehicleType vehicleType { get; set; }
         public string? model { get; set; }
         public string? manufacturer { get; set; }
+        public double price { get; set; }
 
         public Car ToCar()
         {
@@ -30,7 +31,8 @@ namespace Entities.DTOs
                 vehicleType = vehicleType.ToString(),
                 model = model,
                 manufacturer = manufacturer,
-                id = new Guid()
+                id = new Guid(),
+                price = price
             };
         }
     }

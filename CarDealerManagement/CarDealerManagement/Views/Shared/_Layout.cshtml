@@ -3,11 +3,21 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/stylesheet.css" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
+    <ul>
+        <li><img src="~/logo.png" alt="" id="logo"></li>
+        <li><a href="">Index</a></li>
+        <li><a href="">Export to PDF</a></li>
+        <li><a href="">Export to Excell</a></li>
+    </ul>
     <div>
         @RenderBody()
+    </div>
+    <div class="picture-holder">
+        <img src="~/logo.png" alt="" id="after-picture">
     </div>
 </body>
 </html>

@@ -1,25 +1,46 @@
-﻿@model IEnumerable<CarResponse> 
+﻿@model IEnumerable<CarResponse>
 
-<h1>Hello from Index view</h1>
-
-<table>
-    <thead>
+<div class="container-title">
+    <h1>All Cars</h1>
+</div>
+<div class="searching-options">
+    <label for="">Searching parameter:</label>
+    <select>
+        <option value="Manufacturer">Manufacturer</option>
+        <option value="Manufacturer">Model</option>
+        <option value="Manufacturer">Chassis Type</option>
+        <option value="Manufacturer">Transmission Type</option>
+        <option value="Manufacturer">Fuel Type</option>
+    </select>
+    <input type="search" name="" id="">
+    <button>Submit</button>
+</div>
+<div class="table-container">
+    <table class="table">
         <tr>
-            <td>Manufacturer</td>
-            <td>Model</td>
-            <td>KM</td>
-            <td>HP</td>
+            <th><a href="">Manufacturer</a> &#8593;&#8595;</th>
+            <th><a href="">Model</a></th>
+            <th><a href="">Vehicle Type</a></th>
+            <th><a href="">Transmission Type</a></th>
+            <th><a href="">Fuel Type</a></th>
+            <th><a href="">KM</a></th>
+            <th><a href="">Price</a></th>
+            <th><a href="">Reservation</a></th>
+            <th><a href="">Actions</a></th>
         </tr>
-    </thead>
-    <tbody>
         @foreach (CarResponse car in Model)
         {
-          <tr>
+            <tr>
                 <td>@car.manufacturer</td>
                 <td>@car.model</td>
+                <td>@car.vehicleType</td>
+                <td>@car.transmissionType</td>
+                <td>@car.fuelType</td>
                 <td>@car.km</td>
-                <td>@car.hp</td>
-          </tr>  
+                <td>@car.price</td>
+                <td>ads</td>
+                <td><button>More details</button></td>
+            </tr>
         }
-    </tbody>
-</table>
+    </table>
+</div>    

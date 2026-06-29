@@ -28,6 +28,8 @@ namespace Entities
         [Required]
         [StringLength(20)]
         public string? manufacturer { get; set; }
+        [Required]
+        public double price { get; set; }
 
         public override bool Equals(object? obj)
         {            
@@ -47,7 +49,7 @@ namespace Entities
 
         public override string ToString()
         {
-            return $"Parameters of the car: {this.manufacturer}(Manufacturer), {this.model}(Model), {this.vehicleType}(Vehicle Type), {this.fuelType}(Fuel Type), {this.transmissionType}(Transmission Type), {this.manufacturingDate.ToString("dd-MM-yyyy")}(Manufacturing Date), {this.km}(KM), {this.hp}(HP).";
+            return $"Parameters of the car: {this.manufacturer}(Manufacturer), {this.model}(Model), {this.vehicleType}(Vehicle Type), {this.fuelType}(Fuel Type), {this.transmissionType}(Transmission Type), {this.manufacturingDate.ToString("dd-MM-yyyy")}(Manufacturing Date), {this.km}(KM), {this.hp}(HP), {this.price}(price)";
         }
     }
 }
