@@ -3,17 +3,22 @@
 <div class="container-title">
     <h1>All Cars</h1>
 </div>
-<div class="searching-options">
-    <label for="">Searching parameter:</label>
-    <select>
-        <option value="Manufacturer">Manufacturer</option>
-        <option value="Manufacturer">Model</option>
-        <option value="Manufacturer">Chassis Type</option>
-        <option value="Manufacturer">Transmission Type</option>
-        <option value="Manufacturer">Fuel Type</option>
-    </select>
-    <input type="search" name="" id="">
-    <button>Submit</button>
+<div class="actionsForTable">
+    <div class="searching-options">
+        <label for="">Searching parameter:</label>
+        <select>
+            <option value="Manufacturer">Manufacturer</option>
+            <option value="Manufacturer">Model</option>
+            <option value="Manufacturer">Chassis Type</option>
+            <option value="Manufacturer">Transmission Type</option>
+            <option value="Manufacturer">Fuel Type</option>
+        </select>
+        <input type="search" name="" id="">
+        <button>Submit</button>
+    </div>
+    <div class="actionButtons">
+        <a asp-controller="Main" asp-action="AddNewCar" id="addLink">Add</a>
+    </div>
 </div>
 <div class="table-container">
     <table class="table">

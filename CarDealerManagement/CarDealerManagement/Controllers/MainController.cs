@@ -27,5 +27,11 @@ namespace CarDealerManagement.Controllers
             CarResponse? result = await this._CarService.GetCarById(Guid.Parse("11111111-1111-1111-1111-111111111111"));
             return View();
         }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> AddNewCar()
+        {
+            return View();
+        }
     }
 }
