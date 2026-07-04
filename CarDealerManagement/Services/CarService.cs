@@ -22,6 +22,15 @@ namespace Services
 
         public async Task<bool> DeleteCar(Guid id)
         {
+            CarResponse? car = await this._carRepository.GetCarById(id);
+
+            if (car is not null)
+            {
+                string path = Path.Combine(_env.WebRootPath, "SellingHistory.txt");
+                await using StreamWriter sw = new StreamWriter("SellingHistory.txt", append: true);                
+                await sw.WriteLineAsync(car.ToString());
+            }
+
             bool result = await this._carRepository.DeleteCar(id);
             return result;
         }
@@ -33,7 +42,7 @@ namespace Services
 
         public async Task<CarResponse?> UpdateCar(UpdateCarRequest request)
         {
-           return await this._carRepository.UpdateCar(request);
+            return await this._carRepository.UpdateCar(request);
         }
 
         public async Task<CarResponse?> GetCarById(Guid id)

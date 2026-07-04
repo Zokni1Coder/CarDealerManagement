@@ -8,6 +8,6 @@ namespace Entities.Enums
 {
     public enum TransmissionType
     {
-        Hand, Automatic  
+        Manual, Automatic  
     }
 }

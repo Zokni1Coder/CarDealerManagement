@@ -24,7 +24,9 @@ namespace Repositories
 
         public async Task<bool> DeleteCar(Guid id)
         {
-            int affectedRow = await this._carsDBContext.Cars.Select(car => car.id == id).ExecuteDeleteAsync();
+            int affectedRow = await this._carsDBContext.Cars.Where(car => car.id == id).ExecuteDeleteAsync();
+
+            await this._carsDBContext.SaveChangesAsync();
             return affectedRow > 0;
         }
 

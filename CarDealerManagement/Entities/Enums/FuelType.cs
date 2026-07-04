@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Enums
 {
     public enum FuelType
     {
-        Benzin, Diesel, Hybrid_B_E, Hybrid_D_E
+        Benzin, Diesel,
+        [Display(Name = "Hybrid (Petrol-Electric)")]
+        HybridPetrolElectric, 
+        [Display(Name = "Hybrid (Diesel-Electric)")]
+        HybridDieselElectric
     }
 }

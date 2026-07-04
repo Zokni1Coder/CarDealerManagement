@@ -1,1 +1,64 @@
-﻿<h1>Hello from add</h1>
+﻿<h1 class="title">
+    Add new Car
+</h1>
+<div class="form-container">
+    <form asp-controller="Main" asp-action="AddNewCar" method="post">
+        <div class="form-row">
+            <label for="manufacturer">Manufacturer:</label>
+            <input type="text" name="manufacturer" class="form-field" id="manufacturer">
+        </div>
+        <div class="form-row">
+            <label for="model">Model:</label>
+            <input type="text" class="form-field" name="model" id="model">
+        </div>
+        <div class="form-row">
+            <label for="manufacturingDate">Manufacturing Date:</label>
+            <input type="date" class="form-field" name="manufacturingDate" id="manufacturingDate">
+        </div>
+        <div class="form-row">
+            <label for="transmissionType">Transmission Type:</label>
+            <select name="transmissionType" id="transmissionType" class="form-field-select">
+                @foreach (var item in ViewBag.transmissionTypes)
+                {
+                    <option value="@item">@item</option>
+                }
+            </select>
+        </div>
+        <div class="form-row">
+            <label for="vehicleType">Vehicle Type:</label>
+            <select name="vehicleType" id="vehicleType" class="form-field-select">
+                @foreach (var item in ViewBag.vehicleTypes)
+                    {
+                    <option value="@item">@item</option>
+                    }                
+            </select>
+        </div>
+        <div class="form-row">
+            <label for="fuelType">Fuel Type:</label>
+            <select name="fuelType" id="fuelType" class="form-field-select">
+                @foreach (SelectListItem item in ViewBag.fuelTypes)
+                {
+                    <option value="@item.Value">@item.Text</option>
+                }
+            </select>
+        </div>
+        <div class="form-row">
+            <label for="km">KM:</label>
+            <input type="text" class="form-field" name="km" id="km">
+        </div>
+        <div class="form-row">
+            <label for="hp">HP:</label>
+            <input type="text" class="form-field" name="hp" id="hp">
+        </div>
+        <div class="form-row">
+            <label for="price">Price:</label>
+            <input type="text" class="form-field" name="price" id="price">
+        </div>
+        <div class="actions">
+            <div class="actions-back">
+                <a href="/">Back</a>
+            </div>
+            <input type="submit" class="btn" value="Submit">
+        </div>
+    </form>
+</div>

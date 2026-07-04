@@ -1,0 +1,8 @@
+Parameters of the car: Opel(Manufacturer), Kadett(Model), Compact(Vehicle Type), Benzin(Fuel Type), Manual(Transmission Type), 04-02-1988(Manufacturing Date), 123564(KM), 80(HP), 3500(price)
+Parameters of the car: Opel(Manufacturer), Kadett(Model), Compact(Vehicle Type), Benzin(Fuel Type), Manual(Transmission Type), 04-02-1988(Manufacturing Date), 123564(KM), 80(HP), 3500(price)
+Parameters of the car: Opel(Manufacturer), Kadett(Model), Compact(Vehicle Type), Benzin(Fuel Type), Manual(Transmission Type), 04-02-1988(Manufacturing Date), 123564(KM), 80(HP), 3500(price)
+Parameters of the car: Opel(Manufacturer), Kadett(Model), Compact(Vehicle Type), Benzin(Fuel Type), Manual(Transmission Type), 04-02-1988(Manufacturing Date), 123564(KM), 80(HP), 3500(price)
+Parameters of the car: Audi(Manufacturer), A3(Model), Cabrio(Vehicle Type), Diesel(Fuel Type), Manual(Transmission Type), 29-06-2026(Manufacturing Date), 56000(KM), 150(HP), 22000(price)
+Parameters of the car: Skoda(Manufacturer), Octavia(Model), Limousine(Vehicle Type), HybridPetrolElectric(Fuel Type), Manual(Transmission Type), 05-12-2015(Manufacturing Date), 456879(KM), 122(HP), 8654(price)
+Parameters of the car: Audi(Manufacturer), Q4(Model), SUV(Vehicle Type), HybridDieselElectric(Fuel Type), Automatic(Transmission Type), 02-07-2026(Manufacturing Date), 3500(KM), 235(HP), 45000(price)
+Parameters of the car: Audi(Manufacturer), A4(Model), Limousine(Vehicle Type), Benzin(Fuel Type), Automatic(Transmission Type), 01-05-2020(Manufacturing Date), 167000(KM), 122(HP), 1230(price)

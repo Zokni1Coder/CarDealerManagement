@@ -7,12 +7,16 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <ul>
-        <li><img src="~/logo.png" alt="" id="logo"></li>
-        <li><a href="">Index</a></li>
-        <li><a href="">Export to PDF</a></li>
-        <li><a href="">Export to Excell</a></li>
-    </ul>
+    <div class="navbar">
+        <ul>
+            <li><img src="~/logo.png" alt="" id="logo"></li>
+            <li><a asp-controller="Main" asp-action="Index">Index</a></li>
+            <li><a href="">Export to PDF</a></li>
+            <li><a href="">Export to Excell</a></li>
+            <li><a href="">Selling History</a></li>
+            <li><a href="">Buying History</a></li>
+        </ul>
+    </div>
     <div>
         @RenderBody()
     </div>

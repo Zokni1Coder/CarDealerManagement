@@ -17,7 +17,7 @@ namespace Entities
         [Required]
         public int hp { get; set; }
         [Required]
-        [StringLength(10)]
+        [StringLength(25)]
         public string? fuelType { get; set; }
         [Required]
         [StringLength(10)]
