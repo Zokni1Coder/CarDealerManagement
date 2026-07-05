@@ -4,58 +4,119 @@
 <div class="container-title">
     <h1>All Cars</h1>
 </div>
-<div class="actionsForTable">
-    <div class="searching-options">
-        <label for="">Searching parameter:</label>
-        <select>
-            <option value="Manufacturer">Manufacturer</option>
-            <option value="Manufacturer">Model</option>
-            <option value="Manufacturer">Chassis Type</option>
-            <option value="Manufacturer">Transmission Type</option>
-            <option value="Manufacturer">Fuel Type</option>
-        </select>
-        <input type="search" name="" id="">
-        <button>Submit</button>
+<div class="content">
+    <div class="filter-container">
+        <div class="title">
+            Set your Filters
+        </div>
+        <form>
+            <div class="filter-option-row">
+                <label for="">Vehicle Type:</label>
+                <select name="" class="filter-field" id="">
+                    <option value="@null">Choose</option>
+                    @foreach (var type in ViewBag.vehicleTypes)
+                    {
+                        <option value="@type">@type</option>
+                    }
+                </select>
+            </div>
+            <div class="filter-option-row">
+                <label for="">Fuel Type:</label>
+                <select name="" id="" class="filter-field">
+                    <option value="@null">Choose</option>
+                    @foreach (SelectListItem type in ViewBag.fuelTypes)
+                    {
+                        <option value="@type.Value">@type.Text</option>
+                    }
+                </select>
+            </div>
+            <div class="filter-option-row">
+                <label for="">Transmission Type:</label>
+                <select name="" id="" class="filter-field">
+                    <option value="@null">Choose</option>
+                    @foreach (var type in ViewBag.transmissionTypes)
+                    {
+                        <option value="@type">@type</option>
+                    }
+                </select>
+            </div>
+            <div class="filter-option-row">
+                <label for="from">KM:</label>
+                <input type="text" id="from" placeholder="From" class="filter-field">
+                <input type="text" placeholder="To" class="filter-field">
+            </div>
+            <div class="filter-option-row">
+                <label for="price">Price:</label>
+                <input type="text" id="price" class="filter-field" placeholder="From ">
+                <input type="text" class="filter-field" placeholder="To">
+            </div>
+            <div class="filter-option-row">
+                <label for="">Show reserved cars:</label>
+                <label for="yes">Yes</label>
+                <input type="radio" id="yes">
+                <label for="no">No</label>
+                <input type="radio" id="no">
+            </div>
+            <div>
+                <button class="submit-button">Apply</button>
+            </div>
+        </form>
     </div>
-    <div class="actionButtons">
-        <a asp-controller="Main" asp-action="AddNewCar" id="addLink">Add</a>
+    <div class="list-container">
+        <div class="actionsForTable">
+            <div class="searching-options">
+                <label for="">Searching parameter:</label>
+                <select class="searching-field">
+                    <option value="Manufacturer">Manufacturer</option>
+                    <option value="Manufacturer">Model</option>
+                    <option value="Manufacturer">Chassis Type</option>
+                    <option value="Manufacturer">Transmission Type</option>
+                    <option value="Manufacturer">Fuel Type</option>
+                </select>
+                <input type="search" class="searching-field" name="" id="">
+                <button id="search-submit-button">Search</button>
+            </div>
+            <div class="actionButtons">
+                <a asp-controller="Main" asp-action="AddNewCar" id="addLink">Add</a>
+            </div>
+        </div>
+        <div class="table-container">
+            <table class="table">
+                <tr>
+                    <th><a href="">Manufacturer</a> &#8593;&#8595;</th>
+                    <th><a href="">Model</a></th>
+                    <th><a href="">Vehicle Type</a></th>
+                    <th><a href="">Transmission Type</a></th>
+                    <th><a href="">Fuel Type</a></th>
+                    <th><a href="">KM</a></th>
+                    <th><a href="">Price</a></th>
+                    <th><a href="">Reservation</a></th>
+                    <th><a href="">Actions</a></th>
+                </tr>
+                @foreach (CarResponse car in Model)
+                {
+                    <tr>
+                        <td>@car.manufacturer</td>
+                        <td>@car.model</td>
+                        <td>@car.vehicleType</td>
+                        <td>@car.transmissionType</td>
+                        <td>@car.fuelType.GetDisplayName()</td>
+                        <td>@car.km</td>
+                        <td>@car.price$</td>
+                        <td>ads</td>
+                        <td id="actions-cell">
+                            <div class="table-action-buttons">
+                                <form asp-controller="Main">
+                                    <input value="@car.id" name="id" type="hidden" />
+                                    <button>More details</button>
+                                    <button formmethod="post" asp-action="SellCar">Sell</button>
+                                    <button>Reserving</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
     </div>
-</div>
-<div class="table-container">
-    <table class="table">
-        <tr>
-            <th><a href="">Manufacturer</a> &#8593;&#8595;</th>
-            <th><a href="">Model</a></th>
-            <th><a href="">Vehicle Type</a></th>
-            <th><a href="">Transmission Type</a></th>
-            <th><a href="">Fuel Type</a></th>
-            <th><a href="">KM</a></th>
-            <th><a href="">Price</a></th>
-            <th><a href="">Reservation</a></th>
-            <th><a href="">Actions</a></th>
-        </tr>
-        @foreach (CarResponse car in Model)
-        {            
-            <tr>
-                <td>@car.manufacturer</td>
-                <td>@car.model</td>
-                <td>@car.vehicleType</td>
-                <td>@car.transmissionType</td>
-                <td>@car.fuelType.GetDisplayName()</td>
-                <td>@car.km</td>
-                <td>@car.price</td>
-                <td>ads</td>
-                <td id="actions-cell">
-                    <div class="table-action-buttons">
-                        <form asp-controller="Main">
-                            <input value="@car.id" name="id" type="hidden" />
-                            <button>More details</button>
-                            <button formmethod="post" asp-action="SellCar">Sell</button>
-                            <button>Reserving</button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
-        }
-    </table>
-</div>    
+</div> 

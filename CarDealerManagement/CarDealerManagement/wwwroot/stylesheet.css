@@ -40,7 +40,6 @@ table {
     border-collapse: collapse;
     width: 90%;
     box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.61);
-    border-radius: 8px;
 }
 
 th, td {
@@ -68,9 +67,9 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-.table-container {
+.list-container {
     width: 100%;
-    display: flex;
+    display: block;
     justify-content: center;
     text-align: center;
 }
@@ -85,6 +84,7 @@ tr:nth-child(even) {
     font-size: larger;
     overflow: hidden;
     width: auto;
+    word-break: break-all;
 }
 
 #after-picture {
@@ -107,11 +107,11 @@ tr:nth-child(even) {
     margin-right: 0%;
     background-color: orangered;
     border: none;
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 80px;
-    height: 40px;
+    height: 30px;
     width: 80px;
     color: white;
     font-size: medium;
@@ -122,10 +122,41 @@ tr:nth-child(even) {
     box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.61);
 }
 
-    #addLink:hover {
+.submit-button {
+    margin: auto;
+    margin-bottom: 5px;
+    border: none;
+    outline: none;
+    background: orangered;
+    color: white;
+    cursor: pointer;
+    padding: 6px;
+    font-weight: bold;
+    border-radius: 5px;
+    display: flex;
+    box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.61);
+}
+
+    .submit-button:hover {
         background-color: rgb(255, 140, 0);
-        transition: 0.5s;
     }
+
+#search-submit-button {
+    border: none;
+    outline: none;
+    background: orangered;
+    color: white;
+    cursor: pointer;
+    padding: 6px;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.61);
+}
+
+#addLink:hover {
+    background-color: rgb(255, 140, 0);
+    transition: 0.5s;
+}
 
 .actionsForTable {
     display: flex;
@@ -171,7 +202,7 @@ tr:nth-child(even) {
 
         .form-container form .form-field {
             width: 96%;
-            height: 40px;
+            height: 30px;
             background-color: #f2f2f2;
             ;
             border-radius: 5px;
@@ -180,46 +211,71 @@ tr:nth-child(even) {
             padding: 0 10px;
         }
 
-        .form-container form .form-field-select {
-            width: 100%;
-            height: 40px;
-            background-color: #f2f2f2;
-            ;
-            border-radius: 5px;
-            border: 1px solid silver;
-            margin: 10px 0 18px 0;
-            padding: 0 10px;
-        }
+.searching-field {
+    height: 30px;
+    background-color: #f2f2f2;
+    ;
+    border-radius: 5px;
+    border: 1px solid silver;
+    margin: 0;
+    padding: 0 10px;
+}
 
-        .form-container form .btn {
-            margin: auto;
-            transform: translate(-50%);
-            width: 120px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 80px;
-            height: 40px;
-            border: none;
-            outline: none;
-            background: orangered;
-            font-size: 16px;
-            color: white;
-            cursor: pointer;
-            font-size: medium;
-            font-weight: bold;
-            border-radius: 5px;
-        }
+.filter-field {
+    height: 30px;
+    background-color: #f2f2f2;
+    ;
+    border-radius: 5px;
+    border: 1px solid silver;
+    width: 120px;
+    text-align: center;
+}
 
-        .form-container form a {
-            text-decoration: none;
-            background-color: #04AA6D;
-            color: white;
-        }
+.form-container form .form-field-select {
+    width: 100%;
+    height: 40px;
+    background-color: #f2f2f2;
+    ;
+    border-radius: 5px;
+    border: 1px solid silver;
+    margin: 10px 0 18px 0;
+    padding: 0 10px;
+}
 
-        .form-container form .btn:hover {
-            background-color: rgb(255, 140, 0);
-        }
+.searching-options label {
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.form-container form .btn {
+    margin: auto;
+    transform: translate(-50%);
+    width: 120px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background: orangered;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    font-size: medium;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.form-container form a {
+    text-decoration: none;
+    background-color: #04AA6D;
+    color: white;
+}
+
+.form-container form .btn:hover {
+    background-color: rgb(255, 140, 0);
+}
 
 .form-row {
     margin: auto;
@@ -260,12 +316,8 @@ tr:nth-child(even) {
     margin: auto;
 }
 
-#actions-cell {
-    display: flex;
-    justify-content: center;
-}
-
 .table-action-buttons button {
+    margin-top: 5px;
     margin-left: 5px;
     border: none;
     border: none;
@@ -281,3 +333,38 @@ tr:nth-child(even) {
     .table-action-buttons button:hover {
         background-color: rgb(255, 140, 0);
     }
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.filter-container {
+    display: block;
+    justify-content: left;
+    background-color: #04AA6D;
+    border-radius: 0px 5px 5px 0px;
+    box-shadow: 5px 5px 15px 0px rgba(0, 0, 0, 0.61);
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+}
+
+.filter-option-row {
+    margin: 10px;
+    border-bottom: #04fa9f 1px solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px;
+}
+
+.title {
+    margin: 5px;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+}

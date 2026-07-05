@@ -23,6 +23,15 @@ namespace CarDealerManagement.Controllers
         public async Task<IActionResult> Index()
         {
             List<CarResponse>? cars = await this._CarService.GetAllCars();
+
+            ViewBag.transmissionTypes = Enum.GetValues(typeof(TransmissionType)).Cast<TransmissionType>().ToList();
+            ViewBag.vehicleTypes = Enum.GetValues(typeof(VehicleType)).Cast<VehicleType>().ToList();
+            ViewBag.fuelTypes = Enum.GetValues(typeof(FuelType)).Cast<FuelType>().Select(type => new SelectListItem
+            {
+                Value = type.ToString(),
+                Text = type.GetDisplayName()
+            });
+
             return View(cars);
         }
 

@@ -24,12 +24,11 @@ namespace Services
         {
             CarResponse? car = await this._carRepository.GetCarById(id);
 
-            if (car is not null)
-            {
-                string path = Path.Combine(_env.WebRootPath, "SellingHistory.txt");
-                await using StreamWriter sw = new StreamWriter("SellingHistory.txt", append: true);                
-                await sw.WriteLineAsync(car.ToString());
-            }
+            //if (car is not null)
+            //{
+            //    await using StreamWriter sw = new StreamWriter("~/SellingHistory.txt", append: true);                
+            //    await sw.WriteLineAsync(car.ToString());
+            //}
 
             bool result = await this._carRepository.DeleteCar(id);
             return result;
