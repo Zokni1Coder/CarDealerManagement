@@ -4,25 +4,42 @@ using Entities.Enums.Extensions;
 using iTextSharp.tool.xml.html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using ServiceContracts;
 using System.Net;
 using System.Runtime.CompilerServices;
 
 namespace CarDealerManagement.Controllers
 {
+    [Route("[controller]")]
     public class MainController : Controller
     {
         private ICarService _CarService { get; set; }
         public MainController(ICarService carService)
         {
-           this._CarService = carService; 
+            this._CarService = carService;
         }
+
+
 
         [HttpGet("/")]
         [HttpGet("[action]")]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? sortingProperty, string? sortingDirection, string? searchingParameter, string? searchingValue, CarFilter carFilter)
         {
-            List<CarResponse>? cars = await this._CarService.GetAllCars();
+            List<CarResponse>? cars = searchingValue is null ? await this._CarService.GetAllCars() : cars = await this._CarService.SearchingCar(searchingParameter, searchingValue);
+
+            if (carFilter.HasValue())
+            {
+                cars = await this._CarService.FilteringCars(carFilter, cars);
+            }
+
+            SortingDirection direction;
+
+            Enum.TryParse(sortingDirection, out direction);
+
+            cars = await this._CarService.Sorter(sortingProperty, direction, cars);
+
+            ViewBag.sortingDirection = direction;
 
             ViewBag.transmissionTypes = Enum.GetValues(typeof(TransmissionType)).Cast<TransmissionType>().ToList();
             ViewBag.vehicleTypes = Enum.GetValues(typeof(VehicleType)).Cast<VehicleType>().ToList();
@@ -52,7 +69,7 @@ namespace CarDealerManagement.Controllers
                 Value = type.ToString(),
                 Text = type.GetDisplayName()
             });
-            
+
             return View();
         }
 
@@ -67,13 +84,13 @@ namespace CarDealerManagement.Controllers
                 return View();
             }
 
-            return RedirectToAction(nameof(Index) , "Main");
+            return RedirectToAction(nameof(Index), "Main");
         }
 
         [HttpPost("[action]")]
         public async Task<IActionResult> SellCar(Guid id)
         {
-           bool result = await this._CarService.DeleteCar(id);
+            bool result = await this._CarService.DeleteCar(id);
 
             if (!result)
             {

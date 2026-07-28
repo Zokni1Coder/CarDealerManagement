@@ -1,4 +1,5 @@
 ﻿using Entities.DTOs;
+using Entities.Enums;
 
 namespace ServiceContracts
 {
@@ -9,5 +10,8 @@ namespace ServiceContracts
         Task<CarResponse?> UpdateCar(UpdateCarRequest request);
         Task<bool> DeleteCar(Guid id);
         Task<CarResponse?> GetCarById(Guid id);
+        Task<List<CarResponse>?> Sorter(string? sortingProperty, SortingDirection? sortingDirection, List<CarResponse?>? cars);
+        Task<List<CarResponse>?> SearchingCar(string searchingParameter, string? searchingValue);
+        Task<List<CarResponse>?> FilteringCars(CarFilter carFilter, List<CarResponse> cars);
     }
 }
