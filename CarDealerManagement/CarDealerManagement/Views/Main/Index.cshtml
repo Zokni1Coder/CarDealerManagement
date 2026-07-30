@@ -121,10 +121,10 @@
                         <td id="actions-cell">
                             <div class="table-action-buttons">
                                 <form asp-controller="Main">
-                                    <input value="@car.id" name="id" type="hidden" />
+                                    <input value="@car.id" name="CarId" type="hidden" />
                                     <button>More details</button>
                                     <button formmethod="post" asp-action="SellCar">Sell</button>
-                                    <button>Reserving</button>
+                                    <button formmethod="get" asp-action="AddNewReservation">Reserving</button>
                                 </form>
                             </div>
                         </td>

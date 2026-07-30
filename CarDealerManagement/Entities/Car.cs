@@ -1,4 +1,5 @@
-﻿using Entities.Enums;
+﻿using Entities.DTOs;
+using Entities.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace Entities
@@ -18,18 +19,20 @@ namespace Entities
         public int hp { get; set; }
         [Required]
         [StringLength(25)]
-        public string? fuelType { get; set; }
+        public string fuelType { get; set; } = null!;
         [Required]
         [StringLength(10)]
-        public string? vehicleType { get; set; }
+        public string vehicleType { get; set; } = null!;
         [Required]
         [StringLength(20)]
-        public string? model { get; set; }
+        public string model { get; set; } = null!;
         [Required]
         [StringLength(20)]
-        public string? manufacturer { get; set; }
+        public string manufacturer { get; set; } = null!;
         [Required]
-        public double price { get; set; }
+        public decimal price { get; set; }
+        public Guid? ReservationId { get; set; }
+        public Reservation? Reservation { get; set; }
 
         public override bool Equals(object? obj)
         {            
@@ -49,7 +52,7 @@ namespace Entities
 
         public override string ToString()
         {
-            return $"Parameters of the car: {this.manufacturer}(Manufacturer), {this.model}(Model), {this.vehicleType}(Vehicle Type), {this.fuelType}(Fuel Type), {this.transmissionType}(Transmission Type), {this.manufacturingDate.ToString("dd-MM-yyyy")}(Manufacturing Date), {this.km}(KM), {this.hp}(HP), {this.price}(price)";
+            return $"{this.manufacturer}(Manufacturer), {this.model}(Model), {this.vehicleType}(Vehicle Type), {this.fuelType}(Fuel Type), {this.transmissionType}(Transmission Type), {this.manufacturingDate.ToString("dd-MM-yyyy")}(Manufacturing Date), {this.km}(KM), {this.hp}(HP), {this.price}(price)";
         }
     }
 }

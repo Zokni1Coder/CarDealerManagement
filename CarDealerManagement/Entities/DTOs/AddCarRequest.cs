@@ -17,7 +17,7 @@ namespace Entities.DTOs
         public VehicleType vehicleType { get; set; }
         public string? model { get; set; }
         public string? manufacturer { get; set; }
-        public double price { get; set; }
+        public decimal price { get; set; }
 
         public Car ToCar()
         {

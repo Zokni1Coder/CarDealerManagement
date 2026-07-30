@@ -17,6 +17,8 @@ namespace Entities
             
         }
         public DbSet<Car> Cars { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         public async Task<List<CarResponse>?> GetAllCars()
         {
@@ -94,6 +96,8 @@ namespace Entities
             {
                 modelBuilder.Entity<Car>().HasData(car);
             }
+
+            modelBuilder.Entity<Reservation>().HasOne(c => c.Car).WithOne(r => r.Reservation).HasForeignKey<Reservation>(r => r.ReservationId).IsRequired();
         }
     }
 }

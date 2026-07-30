@@ -19,11 +19,11 @@ namespace Entities.DTOs
         public VehicleType vehicleType { get; set; }
         public string? model { get; set; }
         public string? manufacturer { get; set; }
-        public double price { get; set; }
+        public decimal price { get; set; }
 
         public override string ToString()
         {
-            return $"Parameters of the car: {this.manufacturer}(Manufacturer), {this.model}(Model), {this.vehicleType}(Vehicle Type), {this.fuelType}(Fuel Type), {this.transmissionType}(Transmission Type), {this.manufacturingDate.ToString("dd-MM-yyyy")}(Manufacturing Date), {this.km}(KM), {this.hp}(HP), {this.price}(price)";
+            return $"{this.manufacturer}(Manufacturer), {this.model}(Model), {this.vehicleType}(Vehicle Type), {this.fuelType}(Fuel Type), {this.transmissionType}(Transmission Type), {this.manufacturingDate.ToString("dd-MM-yyyy")}(Manufacturing Date), {this.km}(KM), {this.hp}(HP), {this.price}(price)";
         }
     }
 
