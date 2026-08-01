@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/stylesheet.css" />
+    <title></title>
+</head>
+<body>
+    <div class="form-container" id="Reservation-form">
+        <form asp-action="AddNewCustomer" asp-controller="Customer" method="post">
+            <div class="form-row">
+                <label for="firstName">First name:</label>
+                <input type="text" class="form-field" name="firstName" id="firstName">
+            </div>
+            <div class="form-row">
+                <label for="lastName">Last name:</label>
+                <input type="text" class="form-field" name="lastName" id="lastName">
+            </div>
+            <div class="form-row">
+                <label for="birthDate">Birth date:</label>
+                <input type="date" class="form-field" name="birthDate" id="birthDate">
+            </div>
+            <div class="form-row">
+                <label for="address">Address:</label>
+                <input type="text" class="form-field" name="address" id="address">
+            </div>
+            <div class="form-row">
+                <label for="phoneNumber">Phone:</label>
+                <input type="tel" class="form-field" name="phoneNumber" id="phoneNumber">
+            </div>
+            <div class="form-row">
+                <label for="email">Email:</label>
+                <input type="email" class="form-field" name="email" id="email">
+            </div>            
+            <div class="actions">
+                <div class="actions-back">
+                    <a href="javascript:window.close();">Back</a>
+                </div>
+                <button type="submit" class="btn">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

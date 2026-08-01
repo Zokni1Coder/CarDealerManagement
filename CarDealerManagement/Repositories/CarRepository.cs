@@ -8,38 +8,38 @@ namespace Repositories
 {
     public class CarRepository : ICarRepository
     {
-        private readonly CarsDBContext _carsDBContext;
+        private readonly CarDealerDbContext _carDealerDbContext;
 
-        public CarRepository(CarsDBContext carsDBContext)
+        public CarRepository(CarDealerDbContext carsDBContext)
         {
-            this._carsDBContext = carsDBContext;
+            this._carDealerDbContext = carsDBContext;
         }
 
         public async Task<CarResponse> AddCar(Car neweCar)
         {
-            this._carsDBContext.Cars.Add(neweCar);
-            this._carsDBContext.SaveChanges();
+            this._carDealerDbContext.Cars.Add(neweCar);
+            this._carDealerDbContext.SaveChanges();
             return neweCar.ToCarResponse();
         }
 
         public async Task<bool> DeleteCar(Guid id)
         {
-            int affectedRow = await this._carsDBContext.Cars.Where(car => car.id == id).ExecuteDeleteAsync();
+            int affectedRow = await this._carDealerDbContext.Cars.Where(car => car.id == id).ExecuteDeleteAsync();
 
-            await this._carsDBContext.SaveChangesAsync();
+            await this._carDealerDbContext.SaveChangesAsync();
             return affectedRow > 0;
         }
 
         public async Task<List<CarResponse>?> GetAllCars()
         {
-            List<CarResponse>? cars = await this._carsDBContext.GetAllCars();
+            List<CarResponse>? cars = await this._carDealerDbContext.GetAllCars();
 
             return cars;
         }
 
         public async Task<CarResponse?> GetCarById(Guid id)
         {
-            Car? searchedCar = await this._carsDBContext.Cars.FirstOrDefaultAsync(car => car.id == id);
+            Car? searchedCar = await this._carDealerDbContext.Cars.FirstOrDefaultAsync(car => car.id == id);
             if (searchedCar == null) searchedCar = null as Car;
 
             return searchedCar?.ToCarResponse();
@@ -47,7 +47,7 @@ namespace Repositories
 
         public async Task<CarResponse?> UpdateCar(UpdateCarRequest request)
         {
-            Car? updatableCar = await this._carsDBContext.Cars.FirstOrDefaultAsync(car => car.id == request.id);
+            Car? updatableCar = await this._carDealerDbContext.Cars.FirstOrDefaultAsync(car => car.id == request.id);
 
             if (updatableCar == null)
             {
@@ -62,6 +62,8 @@ namespace Repositories
             updatableCar.fuelType = request.fuelType.ToString();
             updatableCar.vehicleType = request.vehicleType.ToString();
             updatableCar.transmissionType = request.transmissionType.ToString();
+
+            await this._carDealerDbContext.SaveChangesAsync();
 
             return updatableCar.ToCarResponse();
         }

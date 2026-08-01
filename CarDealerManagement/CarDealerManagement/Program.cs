@@ -9,10 +9,15 @@ using Repositories;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<ICarService, CarService>();
 builder.Services.AddScoped<ICarRepository, CarRepository>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<CarsDBContext>(
+
+builder.Services.AddDbContext<CarDealerDbContext>(
     options => { options.UseSqlServer(builder.Configuration.GetValue<string>("ConnectionString")); }
     );
+
 var app = builder.Build();
 
 app.UseStaticFiles();

@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class CarsDBContext : DbContext
+    public class CarDealerDbContext : DbContext
     {
-        public CarsDBContext(DbContextOptions<CarsDBContext> options) : base(options)
+        public CarDealerDbContext(DbContextOptions<CarDealerDbContext> options) : base(options)
         {
             
         }

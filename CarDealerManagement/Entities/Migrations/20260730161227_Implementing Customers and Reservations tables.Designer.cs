@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Entities.Migrations
 {
-    [DbContext(typeof(CarsDBContext))]
+    [DbContext(typeof(CarDealerDbContext))]
     [Migration("20260730161227_Implementing Customers and Reservations tables")]
     partial class ImplementingCustomersandReservationstables
     {

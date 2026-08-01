@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Entities.Migrations
 {
-    [DbContext(typeof(CarsDBContext))]
+    [DbContext(typeof(CarDealerDbContext))]
     [Migration("20260629204700_adding_price_column")]
     partial class adding_price_column
     {

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Entities.Migrations
 {
-    [DbContext(typeof(CarsDBContext))]
+    [DbContext(typeof(CarDealerDbContext))]
     [Migration("20260704171224_Modifying_fuelType_attribute")]
     partial class Modifying_fuelType_attribute
     {
