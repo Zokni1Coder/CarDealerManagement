@@ -24,8 +24,28 @@ namespace CarDealerManagement.Controllers
         public async Task<IActionResult> AddNewCustomer(RequestAddCustomer newCustomer)
         {
             ResponseCustomer customer = await this._customerService.AddNewCustomer(newCustomer);
-            
-            return View();
+
+            return RedirectToAction("GetAllCustomer");
+        }
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetAllCustomer()
+        {
+            List<ResponseCustomer>? customers = await this._customerService.GetAllCustomers();
+
+            return View(customers);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> SearchCustomer(string firstName, string lastName)
+        {
+            if (firstName == null && lastName == null)
+            {
+                return RedirectToAction("GetAllCustomer");
+            }
+
+            List<ResponseCustomer>? customers = await this._customerService.SelectCustomerByFullName(firstName, lastName);
+
+            return View("GetAllCustomer", customers);
         }
     }
 }

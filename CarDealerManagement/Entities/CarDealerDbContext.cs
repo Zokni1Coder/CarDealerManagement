@@ -31,6 +31,41 @@ namespace Entities
 
             List<Car>? cars = new List<Car>();
 
+            List<Customer>? customers = new List<Customer>();
+
+            customers.Add(new Customer()
+            {
+                id = Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                firstName = "Ella",
+                lastName = "Nut",
+                birthDate = new DateTime(2000,09,22),
+                phoneNumber = "064581306841",
+                email = "asd@gmail.com",
+                address = "asd str. 8A"
+            });
+
+            customers.Add(new Customer()
+            {
+                id = Guid.Parse("22222222-2222-2222-2222-222222222222"),
+                firstName = "Elek",
+                lastName = "Mek",
+                birthDate = new DateTime(2013, 09, 26),
+                phoneNumber = "064581306976",
+                email = "asd@gmail.at",
+                address = "asd str. 10A"
+            });
+
+            customers.Add(new Customer()
+            {
+                id = Guid.Parse("33333333-3333-3333-3333-333333333333"),
+                firstName = "Edda",
+                lastName = "Kor",
+                birthDate = new DateTime(1986, 06, 10),
+                phoneNumber = "064581300123",
+                email = "asd@gmail.eu",
+                address = "asd str. 26A"
+            });
+
             cars.Add(new Car()
             {
                 id = Guid.Parse("11111111-1111-1111-1111-111111111111"),
@@ -95,6 +130,11 @@ namespace Entities
             foreach (Car car in cars)
             {
                 modelBuilder.Entity<Car>().HasData(car);
+            }
+
+            foreach (Customer customer in customers)
+            {
+                modelBuilder.Entity<Customer>().HasData(customer);
             }
 
             modelBuilder.Entity<Reservation>().HasOne(c => c.Car).WithOne(r => r.Reservation).HasForeignKey<Reservation>(r => r.ReservationId).IsRequired();

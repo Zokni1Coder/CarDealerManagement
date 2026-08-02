@@ -11,8 +11,9 @@ namespace RepositoryContracts
     {
         Task<ResponseCustomer> AddNewCustomer(Customer newCustomer);
 
-        Task<ResponseCustomer> GetCustomerByFullName(string firstName, string lastName);
+        Task<List<ResponseCustomer>?> GetCustomerByFullName(string firstName, string lastName);
 
         Task<ResponseCustomer> UpdateCustomer(UpdateCustomerRequest updateCustomerRequest);
+        Task<List<ResponseCustomer>?> GetAllCustomers();
     }
 }

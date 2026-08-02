@@ -11,10 +11,10 @@ namespace Services
 {
     public class CustomerService : ICustomerService
     {
-        private ICustomerRepository _customerRepository; 
+        private ICustomerRepository _customerRepository;
         public CustomerService(ICustomerRepository customerRepository)
         {
-           this._customerRepository = customerRepository; 
+            this._customerRepository = customerRepository;
         }
 
         public async Task<ResponseCustomer> AddNewCustomer(RequestAddCustomer newCustomer)
@@ -24,9 +24,16 @@ namespace Services
             return response;
         }
 
-        public async Task<ResponseCustomer> SelectCustomerByFullName(string firstName, string lastName)
+        public async Task<List<ResponseCustomer>?> GetAllCustomers()
         {
-            ResponseCustomer? response = await this._customerRepository.GetCustomerByFullName(firstName, lastName);
+            List<ResponseCustomer>? response = await this._customerRepository.GetAllCustomers();
+
+            return response;
+        }
+
+        public async Task<List<ResponseCustomer>?> SelectCustomerByFullName(string firstName, string lastName)
+        {
+            List<ResponseCustomer>? response = await this._customerRepository.GetCustomerByFullName(firstName, lastName);
 
             return response;
         }

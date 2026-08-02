@@ -32,18 +32,17 @@
             </div>
             <div class="customer-form-row">
                 <label>Customer:</label>
-                <div class="customer-actions">
-                    <a asp-controller="Customer" asp-action="AddNewCustomer"
-                       onclick="window.open(this.href, '_blank', 'width=800,height=800'); return false;">>Add new</a>
-                    <a href="/">Select</a>
+                <div class="customer-actions">                    
+                    <a asp-controller="Customer" asp-action="GetAllCustomer" onclick="window.open(this.href, '_blank', 'width=1200,height=800'); return false;">Select</a>
+                    <input type="hidden" id="customerId" name="customerId" />                    
                 </div>
             </div>
             <div class="detail-form-row">
-                <label>Full name: </label>
-                <label>Birth date: </label>
-                <label>Address:</label>
-                <label>Phone:</label>
-                <label>Email:</label>
+                <label>Full name: <span id="full-name"></span></label>
+                <label>Birth date: <span id="birth-date"></span></label>
+                <label>Address: <span id="address"></span></label>
+                <label>Phone: <span id="phone"></span></label>
+                <label>Email: <span id="email"></span></label>
             </div>
             <div class="actions">
                 <div class="actions-back">

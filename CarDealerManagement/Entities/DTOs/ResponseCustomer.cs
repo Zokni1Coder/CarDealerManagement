@@ -9,7 +9,7 @@ namespace Entities.DTOs
 {
     public class ResponseCustomer
     {
-        public Guid id { get; set; }
+        public Guid customerId { get; set; }
         public string? firstName { get; set; }
         public string? lastName { get; set; }
         public DateTime birthDate { get; set; }
@@ -24,7 +24,7 @@ namespace Entities.DTOs
         {
             ResponseCustomer responseCustomer = new ResponseCustomer();
 
-            responseCustomer.id = customer.id;
+            responseCustomer.customerId = customer.id;
             responseCustomer.firstName = customer.firstName;
             responseCustomer.lastName = customer.lastName;
             responseCustomer.address = customer.address;

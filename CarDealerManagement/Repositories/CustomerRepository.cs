@@ -26,11 +26,31 @@ namespace Repositories
             return newCustomer.ToResponseCustomer();
         }
 
-        public async Task<ResponseCustomer> GetCustomerByFullName(string firstName, string lastName)
+        public async Task<List<ResponseCustomer>?> GetAllCustomers()
         {
-            Customer? temp = await this._carDealerDbContext.Customers.Where(c => c.firstName.ToLower().Equals(firstName.ToLower()) && c.lastName.ToLower().Equals(lastName.ToLower())).FirstOrDefaultAsync();
+            List<ResponseCustomer> response = await this._carDealerDbContext.Customers.Select(c => c.ToResponseCustomer()).ToListAsync();
 
-            return temp.ToResponseCustomer();
+            return response;
+        }
+
+        public async Task<List<ResponseCustomer>?> GetCustomerByFullName(string firstName, string lastName)
+        {
+            List<ResponseCustomer>? temp = new List<ResponseCustomer>();
+
+            if (firstName != null && lastName != null)
+            {
+                temp = await this._carDealerDbContext.Customers.Where(c => c.firstName.Contains(firstName) && c.lastName.Contains(lastName)).Select(c => c.ToResponseCustomer()).ToListAsync();
+            }
+            else if (lastName != null)
+            {
+                temp = await this._carDealerDbContext.Customers.Where(c => c.lastName.Contains(lastName)).Select(c => c.ToResponseCustomer()).ToListAsync();
+            }
+            else
+            {
+                temp = await this._carDealerDbContext.Customers.Where(c => c.firstName.Contains(firstName)).Select(c => c.ToResponseCustomer()).ToListAsync();
+            }
+
+            return temp;
         }
 
         public async Task<ResponseCustomer> UpdateCustomer(UpdateCustomerRequest updateCustomerRequest)

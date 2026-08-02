@@ -11,6 +11,7 @@ namespace ServiceContracts
     {
         Task<ResponseCustomer> AddNewCustomer(RequestAddCustomer newCustomer);
         Task<ResponseCustomer> UpdateCustomer(UpdateCustomerRequest customer);
-        Task<ResponseCustomer> SelectCustomerByFullName(string firstName, string lastName);
+        Task<List<ResponseCustomer>?> SelectCustomerByFullName(string firstName, string lastName);
+        Task<List<ResponseCustomer>?> GetAllCustomers();
     }
 }

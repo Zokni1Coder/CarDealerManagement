@@ -1,0 +1,102 @@
+﻿@model List<ResponseCustomer>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/stylesheet.css">
+</head>
+<body>
+    <div class="container-title">
+        <h1>All Customer</h1>
+    </div>
+    <div class="content">
+        <div class="list-container">
+            <div class="actionsForTable">
+                <div class="searching-options">
+                    <form asp-action="SearchCustomer" asp-controller="Customer" method="get">
+                        <label for="firstName">First name:</label>
+                        <input type="search" name="firstName" class="searching-field" id="firstName">
+                        <label for="lastName">Last name:</label>
+                        <input type="search" name="lastName" class="searching-field" id="lastName">
+                        <button id="search-submit-button">Submit</button>
+                    </form>
+                </div>
+                <div class="actionButtons">
+                    <a asp-action="AddNewCustomer" asp-controller="Customer" id="addLink">Add</a>
+                </div>
+            </div>
+            <div class="table-container">
+                <table>
+                    <tr id="table-header">
+                        <th><a href="">First name</a></th>
+                        <th><a href="">Last name</a></th>
+                        <th><a href="">Birth date</a></th>
+                        <th><a href="">Address</a></th>
+                        <th><a href="">Phone</a></th>
+                        <th><a href="">Email</a></th>
+                        <th><a href="">Actions</a></th>
+                    </tr>
+                    @foreach (ResponseCustomer customer in Model)
+                    {
+                        <form asp-controller="Customer">
+                        <tr>
+                            <td>@customer.firstName</td>
+                            <td>@customer.lastName</td>
+                            <td>@customer.birthDate.ToString("dd/MM/yyyy")</td>
+                            <td>@customer.address</td>
+                            <td>@customer.phoneNumber</td>
+                            <td>@customer.email</td>
+                            <td id="actions-cell">
+                                <div class="table-action-buttons">
+                                    <button asp-action="">Modify</button>
+                                    <button onclick="selectCustomer('@customer.customerId', '@customer.firstName @customer.lastName', '@customer.birthDate.ToString("dd/MM/yyyy")', '@customer.address', '@customer.phoneNumber', '@customer.email')">Select</button>
+                                </div>
+                            </td>
+                        </tr>
+                        </form>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="picture-holder">
+        <img src="logo.png" alt="" id="after-picture">
+    </div>
+    <script>
+        function selectCustomer(id, name, birthdate, address, phone, email) {
+
+            window.opener.document
+                .getElementById("customerId")
+                .innerText = id;
+
+            window.opener.document
+                .getElementById("full-name")
+                .innerText = name;
+
+            window.opener.document
+                .getElementById("birth-date")
+                .innerText = birthdate;
+
+            window.opener.document
+                .getElementById("address")
+                .innerText = address;
+
+            window.opener.document
+                .getElementById("phone")
+                .innerText = phone;
+
+            window.opener.document
+                .getElementById("email")
+                .innerText = email;
+
+            window.close();
+        }
+    </script>
+</body>
+</html>
