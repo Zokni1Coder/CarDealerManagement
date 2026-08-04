@@ -31,6 +31,13 @@ namespace Services
             return response;
         }
 
+        public async Task<ResponseCustomer> GetCustomerById(Guid customerId)
+        {
+            ResponseCustomer? response = await this._customerRepository.GetCustomerById(customerId);
+
+            return response;
+        }
+
         public async Task<List<ResponseCustomer>?> SelectCustomerByFullName(string firstName, string lastName)
         {
             List<ResponseCustomer>? response = await this._customerRepository.GetCustomerByFullName(firstName, lastName);

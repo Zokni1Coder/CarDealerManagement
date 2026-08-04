@@ -15,5 +15,6 @@ namespace RepositoryContracts
 
         Task<ResponseCustomer> UpdateCustomer(UpdateCustomerRequest updateCustomerRequest);
         Task<List<ResponseCustomer>?> GetAllCustomers();
+        Task<ResponseCustomer?> GetCustomerById(Guid customerID);
     }
 }

@@ -47,5 +47,20 @@ namespace CarDealerManagement.Controllers
 
             return View("GetAllCustomer", customers);
         }
+        [HttpGet("[action]")]
+        public async Task<IActionResult> UpdateCustomer(Guid customerId)
+        {
+            ResponseCustomer updatableCustomer = await this._customerService.GetCustomerById(customerId);
+
+            return View(updatableCustomer);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> UpdateCustomer(UpdateCustomerRequest updatableCustomer)
+        {
+            ResponseCustomer response = await this._customerService.UpdateCustomer(updatableCustomer);
+
+            return RedirectToAction("GetAllCustomer");
+        }
     }
 }

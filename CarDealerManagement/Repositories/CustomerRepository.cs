@@ -53,6 +53,13 @@ namespace Repositories
             return temp;
         }
 
+        public async Task<ResponseCustomer?> GetCustomerById(Guid customerID)
+        {
+            ResponseCustomer? response = await this._carDealerDbContext.Customers.Where(c => c.id == customerID).Select(c => c.ToResponseCustomer()).FirstOrDefaultAsync();
+
+            return response;
+        }
+
         public async Task<ResponseCustomer> UpdateCustomer(UpdateCustomerRequest updateCustomerRequest)
         {
             Customer? temp = await this._carDealerDbContext.Customers.FirstOrDefaultAsync(c => c.id == updateCustomerRequest.id);

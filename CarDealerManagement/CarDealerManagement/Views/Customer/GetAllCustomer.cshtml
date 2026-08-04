@@ -44,7 +44,8 @@
                     </tr>
                     @foreach (ResponseCustomer customer in Model)
                     {
-                        <form asp-controller="Customer">
+                        <form asp-controller="Customer" method="get">
+                            <input type="hidden" value="@customer.customerId" name="customerId" />
                         <tr>
                             <td>@customer.firstName</td>
                             <td>@customer.lastName</td>
@@ -54,7 +55,7 @@
                             <td>@customer.email</td>
                             <td id="actions-cell">
                                 <div class="table-action-buttons">
-                                    <button asp-action="">Modify</button>
+                                    <button asp-action="UpdateCustomer">Modify</button>
                                     <button onclick="selectCustomer('@customer.customerId', '@customer.firstName @customer.lastName', '@customer.birthDate.ToString("dd/MM/yyyy")', '@customer.address', '@customer.phoneNumber', '@customer.email')">Select</button>
                                 </div>
                             </td>

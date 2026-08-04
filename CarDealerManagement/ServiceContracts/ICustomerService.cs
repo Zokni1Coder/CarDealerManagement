@@ -13,5 +13,6 @@ namespace ServiceContracts
         Task<ResponseCustomer> UpdateCustomer(UpdateCustomerRequest customer);
         Task<List<ResponseCustomer>?> SelectCustomerByFullName(string firstName, string lastName);
         Task<List<ResponseCustomer>?> GetAllCustomers();
+        Task<ResponseCustomer> GetCustomerById(Guid customerId);
     }
 }
