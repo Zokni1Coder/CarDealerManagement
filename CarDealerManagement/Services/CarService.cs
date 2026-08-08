@@ -106,6 +106,11 @@ namespace Services
                 filteredCars = filteredCars.Where(car => car.transmissionType == carFilter.transmissionType).ToList();
             }
 
+            if (!carFilter.showingReserved)
+            {
+                filteredCars = filteredCars.Where(car => car.ReservationId != null).ToList();
+            }
+
             return filteredCars;
         }
     }

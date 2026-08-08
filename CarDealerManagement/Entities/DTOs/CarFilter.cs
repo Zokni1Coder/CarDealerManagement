@@ -19,7 +19,7 @@ namespace Entities.DTOs
 
         public bool HasValue()
         {
-            return transmissionType is not null || km is not null || fuelType is not null || vehicleType is not null || price is not null; 
+            return transmissionType is not null || km.From is not 0 || km.To is not int.MaxValue || fuelType is not null || vehicleType is not null || price.From is not 0 || price.To is not int.MaxValue || showingReserved is true; 
         }
     }
 }

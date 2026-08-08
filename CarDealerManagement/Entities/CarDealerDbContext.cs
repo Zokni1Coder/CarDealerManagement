@@ -14,7 +14,7 @@ namespace Entities
     {
         public CarDealerDbContext(DbContextOptions<CarDealerDbContext> options) : base(options)
         {
-            
+
         }
         public DbSet<Car> Cars { get; set; }
         public DbSet<Customer> Customers { get; set; }
@@ -38,7 +38,7 @@ namespace Entities
                 id = Guid.Parse("11111111-1111-1111-1111-111111111111"),
                 firstName = "Ella",
                 lastName = "Nut",
-                birthDate = new DateTime(2000,09,22),
+                birthDate = new DateTime(2000, 09, 22),
                 phoneNumber = "064581306841",
                 email = "asd@gmail.com",
                 address = "asd str. 8A"
@@ -137,7 +137,15 @@ namespace Entities
                 modelBuilder.Entity<Customer>().HasData(customer);
             }
 
-            modelBuilder.Entity<Reservation>().HasOne(c => c.Car).WithOne(r => r.Reservation).HasForeignKey<Reservation>(r => r.ReservationId).IsRequired();
+            modelBuilder.Entity<Reservation>()
+                .HasOne(r => r.Car)
+                .WithMany(c => c.Reservations)
+                .HasForeignKey(r => r.CarId);
+
+            modelBuilder.Entity<Reservation>()
+                .HasOne(r => r.Customer)
+                .WithMany(c => c.Reservations)
+                .HasForeignKey(r => r.CustomerId);
         }
     }
 }

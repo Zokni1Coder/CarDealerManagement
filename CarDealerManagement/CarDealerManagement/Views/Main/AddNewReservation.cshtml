@@ -2,6 +2,8 @@
 
 @{
     Layout = null;
+
+    decimal payingAmount = @Model.price / 10;
 }
 <html>
 <head>
@@ -28,7 +30,7 @@
             </div>
             <div class="form-row">
                 <label for="Pay_Amount">Reservation Pay Amount:</label>
-                <input type="text" class="form-field" name="" id="Pay_Amount">
+                <input type="text" value="@payingAmount€" class="form-field" name="" id="Pay_Amount">
             </div>
             <div class="customer-form-row">
                 <label>Customer:</label>

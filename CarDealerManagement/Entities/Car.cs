@@ -1,5 +1,4 @@
-﻿using Entities.DTOs;
-using Entities.Enums;
+﻿using Entities.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace Entities
@@ -32,13 +31,14 @@ namespace Entities
         [Required]
         public decimal price { get; set; }
         public Guid? ReservationId { get; set; }
-        public Reservation? Reservation { get; set; }
+        public ICollection<Reservation> Reservations { get; set; }
+    = new List<Reservation>();
 
         public override bool Equals(object? obj)
-        {            
+        {
             if (obj is not Car)
             {
-               return false;
+                return false;
             }
             Car? temp = obj as Car;
 

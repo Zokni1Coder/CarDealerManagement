@@ -20,6 +20,9 @@ namespace Entities.DTOs
         public string? model { get; set; }
         public string? manufacturer { get; set; }
         public decimal price { get; set; }
+        public Guid? ReservationId { get; set; }
+        public ICollection<Reservation> Reservations { get; set; }
+    = new List<Reservation>();
 
         public override string ToString()
         {
@@ -43,7 +46,9 @@ namespace Entities.DTOs
                 vehicleType = Enum.Parse<VehicleType>(car.vehicleType),
                 km = car.km,
                 hp = car.hp,
-                price = car.price
+                price = car.price,
+                ReservationId = car.ReservationId,
+                Reservations = car.Reservations
             };
         }
     }
