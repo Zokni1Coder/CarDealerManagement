@@ -9,11 +9,9 @@ namespace Entities.DTOs
 {
     public class RequestAddNewReservation
     {
-        public DateTime ReservationDate { get; set; }
+        public DateTime ReservationDate { get; set; } = DateTime.Now;
         public Guid CustomerId { get; set; }
-        public Customer Customer { get; set; } = null!;
         public Guid CarId { get; set; }
-        public Car Car { get; set; } = null!;
         public decimal PaidAmount { get; set; }
         public Reservation ToReservation()
         {
@@ -22,9 +20,8 @@ namespace Entities.DTOs
             reservation.ReservationId = Guid.NewGuid();
             reservation.ReservationDate = ReservationDate;
             reservation.CustomerId = CustomerId;
-            reservation.Customer = Customer;
-            reservation.Car = Car;
             reservation.PaidAmount = PaidAmount;
+            reservation.CarId = CarId;
 
             return reservation;
         }

@@ -99,14 +99,6 @@ namespace CarDealerManagement.Controllers
                 return RedirectToAction(nameof(Index), "Main");
             }
             return RedirectToAction(nameof(Index), "Main");
-        }
-
-        [HttpGet("[action]")]
-        public async Task<IActionResult> AddNewReservation(Guid CarId)
-        {
-            CarResponse? selectedCar = await this._CarService.GetCarById(CarId);
-
-            return View(selectedCar);
-        }
+        }        
     }
 }

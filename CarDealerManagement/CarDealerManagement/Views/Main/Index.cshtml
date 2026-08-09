@@ -124,7 +124,7 @@
                                     <input value="@car.id" name="CarId" type="hidden" />
                                     <button>More details</button>
                                     <button formmethod="post" asp-action="SellCar">Sell</button>
-                                    <button type="button" onclick="window.open('@Url.Action("AddNewReservation", "Main", new { carId = car.id })', '_blank', 'width=800,height=800')" formmethod="get">Reserving</button>
+                                    <button type="button" onclick="window.open('@Url.Action("AddNewReservation", "Reservation", new { carId = car.id })', '_blank', 'width=800,height=800')" formmethod="get">Reserving</button>
                                 </form>
                             </div>
                         </td>

@@ -3,7 +3,7 @@
 @{
     Layout = null;
 
-    decimal payingAmount = @Model.price / 10;
+    decimal payingAmount = Model.price / 10;
 }
 <html>
 <head>
@@ -13,11 +13,12 @@
 </head>
 <body>
     <div class="form-container" id="Reservation-form">
-        <form action="" method="post">
+        <form asp-controller="Reservation" asp-action="AddNewReservation" method="post">
             <div class="form-row">
                 <label>Selected car:</label>
             </div>
             <div class="detail-form-row">
+                <input type="hidden" name="CarId" value="@Model.id" />
                 <label>Manufacturer: @Model.manufacturer</label>
                 <label>Model: @Model.model</label>
                 <label>Manufacturin date: @Model.manufacturingDate.ToString("dd/MM/yyyy")</label>
@@ -30,13 +31,14 @@
             </div>
             <div class="form-row">
                 <label for="Pay_Amount">Reservation Pay Amount:</label>
-                <input type="text" value="@payingAmount€" class="form-field" name="" id="Pay_Amount">
+                <input type="text" value="@payingAmount€" class="form-field" id="Pay_Amount">
+                <input type="hidden" name="PaidAmount" value="@payingAmount" />
             </div>
             <div class="customer-form-row">
                 <label>Customer:</label>
-                <div class="customer-actions">                    
+                <div class="customer-actions">
                     <a asp-controller="Customer" asp-action="GetAllCustomer" onclick="window.open(this.href, '_blank', 'width=1200,height=800'); return false;">Select</a>
-                    <input type="hidden" id="customerId" name="customerId" />                    
+                    <input type="hidden" id="customerId" name="CustomerId" />
                 </div>
             </div>
             <div class="detail-form-row">

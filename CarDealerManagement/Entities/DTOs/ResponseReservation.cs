@@ -11,9 +11,7 @@ namespace Entities.DTOs
         public Guid ReservationId { get; set; }
         public DateTime ReservationDate { get; set; }
         public Guid CustomerId { get; set; }
-        public Customer Customer { get; set; } = null!;
         public Guid CarId { get; set; }
-        public Car Car { get; set; } = null!;
         public decimal PaidAmount { get; set; }
     }
 
@@ -26,9 +24,7 @@ namespace Entities.DTOs
             response.ReservationId = reservation.ReservationId;
             response.ReservationDate = reservation.ReservationDate;
             response.CustomerId = reservation.CustomerId;
-            response.Customer = reservation.Customer;
             response.CarId = reservation.CarId;
-            response.Car = reservation.Car;
             response.PaidAmount = reservation.PaidAmount;
 
             return response;
