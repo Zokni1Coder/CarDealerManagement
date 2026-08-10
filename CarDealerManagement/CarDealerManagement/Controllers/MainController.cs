@@ -25,13 +25,18 @@ namespace CarDealerManagement.Controllers
 
         [HttpGet("/")]
         [HttpGet("[action]")]
-        public async Task<IActionResult> Index(string? sortingProperty, string? sortingDirection, string? searchingParameter, string? searchingValue, CarFilter carFilter)
+        public async Task<IActionResult> Index(string? sortingProperty, string? sortingDirection, string? searchingParameter, string? searchingValue, CarFilter carFilter, bool showingReserved)
         {
             List<CarResponse>? cars = searchingValue is null ? await this._CarService.GetAllCars() : cars = await this._CarService.SearchingCar(searchingParameter, searchingValue);
 
             if (carFilter.HasValue())
             {
                 cars = await this._CarService.FilteringCars(carFilter, cars);
+            }
+
+            if (!showingReserved)
+            {
+                cars = await this._CarService.GetUnreservedCars(cars);
             }
 
             SortingDirection direction;

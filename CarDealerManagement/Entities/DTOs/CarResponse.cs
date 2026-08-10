@@ -47,7 +47,6 @@ namespace Entities.DTOs
                 km = car.km,
                 hp = car.hp,
                 price = car.price,
-                ReservationId = car.ReservationId,
                 Reservations = car.Reservations
             };
         }

@@ -30,7 +30,6 @@ namespace Entities
         public string manufacturer { get; set; } = null!;
         [Required]
         public decimal price { get; set; }
-        public Guid? ReservationId { get; set; }
         public ICollection<Reservation> Reservations { get; set; }
     = new List<Reservation>();
 

@@ -9,9 +9,11 @@ namespace Services
     public class CarService : ICarService
     {
         private ICarRepository _carRepository { get; set; }
-        public CarService(ICarRepository carRepository)
+        private readonly IReservationRepository _reservationRepository;
+        public CarService(ICarRepository carRepository, IReservationRepository reservationRepository)
         {
             this._carRepository = carRepository;
+            this._reservationRepository = reservationRepository;
         }
 
         public async Task<CarResponse> AddCar(AddCarRequest request)
@@ -106,12 +108,16 @@ namespace Services
                 filteredCars = filteredCars.Where(car => car.transmissionType == carFilter.transmissionType).ToList();
             }
 
-            if (!carFilter.showingReserved)
-            {
-                filteredCars = filteredCars.Where(car => car.ReservationId != null).ToList();
-            }
-
             return filteredCars;
+        }
+
+        public async Task<List<CarResponse>?> GetUnreservedCars(List<CarResponse> cars)
+        {
+            List<ResponseReservation>? reservations = await this._reservationRepository.GetAllReservation();
+
+            cars = cars.Where(car => !reservations.Any(r => r.CarId == car.id)).ToList();
+
+            return cars;
         }
     }
 }

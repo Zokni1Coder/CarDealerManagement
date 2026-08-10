@@ -1,5 +1,6 @@
 ﻿using Entities;
 using Entities.DTOs;
+using Microsoft.EntityFrameworkCore;
 using RepositoryContracts;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,13 @@ namespace Repositories
             await this._carDealerDbContext.SaveChangesAsync();
 
             return reservation.ToResponseReservation();
+        }
+
+        public async Task<List<ResponseReservation>?> GetAllReservation()
+        {
+            List<ResponseReservation>? reservations = await this._carDealerDbContext.Reservations.Select(r => r.ToResponseReservation()).ToListAsync();
+
+            return reservations;
         }
     }
 }

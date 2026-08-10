@@ -13,5 +13,6 @@ namespace ServiceContracts
         Task<List<CarResponse>?> Sorter(string? sortingProperty, SortingDirection? sortingDirection, List<CarResponse?>? cars);
         Task<List<CarResponse>?> SearchingCar(string searchingParameter, string? searchingValue);
         Task<List<CarResponse>?> FilteringCars(CarFilter carFilter, List<CarResponse> cars);
+        Task<List<CarResponse>?> GetUnreservedCars(List<CarResponse> cars);
     }
 }

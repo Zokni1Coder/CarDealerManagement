@@ -15,11 +15,10 @@ namespace Entities.DTOs
         public FuelType? fuelType { get; set; }
         public VehicleType? vehicleType { get; set; }
         public RangeFilter? price { get; set; } = new RangeFilter();
-        public bool showingReserved { get; set; } = false;
 
         public bool HasValue()
         {
-            return transmissionType is not null || km.From is not 0 || km.To is not int.MaxValue || fuelType is not null || vehicleType is not null || price.From is not 0 || price.To is not int.MaxValue || showingReserved is true; 
+            return transmissionType is not null || km.From is not 0 || km.To is not int.MaxValue || fuelType is not null || vehicleType is not null || price.From is not 0 || price.To is not int.MaxValue; 
         }
     }
 }

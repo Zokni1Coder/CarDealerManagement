@@ -10,5 +10,6 @@ namespace RepositoryContracts
     public interface IReservationRepository
     {
         Task<ResponseReservation> AddNewReservation(RequestAddNewReservation newReservation);
+        Task<List<ResponseReservation>?> GetAllReservation();
     }
 }
