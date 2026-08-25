@@ -1,4 +1,5 @@
-﻿using Entities.DTOs;
+﻿using Entities;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace RepositoryContracts
     public interface IReservationRepository
     {
         Task<ResponseReservation> AddNewReservation(RequestAddNewReservation newReservation);
-        Task<List<ResponseReservation>?> GetAllReservation();
+        Task<List<Reservation>?> GetAllReservation();
+        Task<List<Reservation>?> GetAllActiveReservations();
+        Task SaveChange();
     }
 }

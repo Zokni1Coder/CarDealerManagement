@@ -10,5 +10,6 @@ namespace ServiceContracts
     public interface IReservationService
     {
         Task<ResponseReservation> AddNewReservation(RequestAddNewReservation newReservation);
+        Task<List<ResponseReservation>?> GetAllActiveReservation();
     }
 }

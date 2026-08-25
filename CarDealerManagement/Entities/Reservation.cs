@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,5 +18,14 @@ namespace Entities
         public Guid CarId { get; set; }
         public Car Car { get; set; } = null!;
         public decimal PaidAmount { get; set; }
+        [Required]
+        public ReservationStatus Status { get; set; }
+        public void CheckExpiration()
+        {
+            if (ReservationDate < DateTime.Now.AddDays(-7))
+            {
+                this.Status = ReservationStatus.expired;
+            }
+        }
     }
 }

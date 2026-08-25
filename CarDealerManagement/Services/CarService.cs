@@ -113,7 +113,7 @@ namespace Services
 
         public async Task<List<CarResponse>?> GetUnreservedCars(List<CarResponse> cars)
         {
-            List<ResponseReservation>? reservations = await this._reservationRepository.GetAllReservation();
+            List<Reservation>? reservations = await this._reservationRepository.GetAllReservation();
 
             cars = cars.Where(car => !reservations.Any(r => r.CarId == car.id)).ToList();
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace Entities.DTOs
         public Guid CustomerId { get; set; }
         public Guid CarId { get; set; }
         public decimal PaidAmount { get; set; }
+        public ReservationStatus Status { get; set; }        
     }
 
     public static class ReservationExtension
@@ -26,6 +28,7 @@ namespace Entities.DTOs
             response.CustomerId = reservation.CustomerId;
             response.CarId = reservation.CarId;
             response.PaidAmount = reservation.PaidAmount;
+            response.Status = reservation.Status;
 
             return response;
         }

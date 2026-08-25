@@ -1,5 +1,6 @@
 ﻿using Entities;
 using Entities.DTOs;
+using Entities.Enums;
 using Microsoft.EntityFrameworkCore;
 using RepositoryContracts;
 using System;
@@ -30,11 +31,25 @@ namespace Repositories
             return reservation.ToResponseReservation();
         }
 
-        public async Task<List<ResponseReservation>?> GetAllReservation()
+        public async Task<List<Reservation>?> GetAllActiveReservations()
         {
-            List<ResponseReservation>? reservations = await this._carDealerDbContext.Reservations.Select(r => r.ToResponseReservation()).ToListAsync();
+            List<Reservation>? allReservations = await this.GetAllReservation();
+
+            List<Reservation>? activeReservations = allReservations?.Where(r => r.Status == ReservationStatus.active).ToList();
+
+            return activeReservations;
+        }
+
+        public async Task<List<Reservation>?> GetAllReservation()
+        {
+            List<Reservation>? reservations = await this._carDealerDbContext.Reservations.ToListAsync();
 
             return reservations;
+        }
+
+        public async Task SaveChange()
+        {
+            await this._carDealerDbContext.SaveChangesAsync();
         }
     }
 }
